@@ -16,14 +16,29 @@
             <label>Wishlist Admin Email</label>
             <tab>space_tab</tab>
             <resource>Space_WishlistAdminEmail::wishlist_admin_email</resource>
-            <group id="wishlist_admin_email_config" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
-                   showInStore="0">
+            <group id="wishlist_admin_email_config" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="0">
                 <label>Configuration</label>
-                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
-                       showInStore="0" canRestore="1">
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Enable Extension</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                     <comment>Enable extension.</comment>
+                </field>
+                <field id="enable_segmentation" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable Customer Segmentation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Please select yes, if you would like to set specified customer groups for notification.</comment>
+                </field>
+                <field id="customer_groups" translate="label comment" type="multiselect" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enabled Customer Groups</label>
+                    <source_model>Space\WishlistAdminEmail\Model\Config\Source\CustomerGroups</source_model>
+                    <depends>
+                        <field id="enable_segmentation">1</field>
+                    </depends>
+                    <comment>Please select customer groups.</comment>
                 </field>
             </group>
         </section>

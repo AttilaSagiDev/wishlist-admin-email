@@ -11,6 +11,7 @@
         <wishlist_admin_email>
             <wishlist_admin_email_config>
                 <enabled>0</enabled>
+                <enable_segmentation>0</enable_segmentation>
             </wishlist_admin_email_config>
         </wishlist_admin_email>
     </default>
