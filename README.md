@@ -51,7 +51,7 @@ Unzip extension contents on your computer and navigate inside the extracted fold
 5. Enable extension
 Please use the following commands in the /bin directory of your Magento 2.0 instance:
 
-    php magento module:enable Me_Wlae
+    php magento module:enable Space_ WishlistAdminEmail
 
     php magento setup:upgrade 
 
@@ -59,7 +59,7 @@ One more time clear the cache under var/cache and var/page_cache login to Magent
 
 ## Configuration ##
  
-Login to Magento backend (admin panel). You can find the module configuration here: Stores / Configuration, in the left menu Magevolve Extensions / Wish List Admin Email.
+Login to Magento backend (admin panel). You can find the module configuration here: Stores / Configuration, in the left menu Space Extensions / Wishlist Admin Email.
 
 Settings:
 
@@ -109,4 +109,4 @@ If you have any questions about the extension, please contact us.
 
 ## License ##
 
-See COPYING.txt for license details.
+MIT License.
