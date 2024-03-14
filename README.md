@@ -1,4 +1,4 @@
-# **Magento 2.0 Wish List Admin Email Extension** #
+# **Magento 2.0 Wishlist Admin Email Extension** #
 
 
 ## Description ##
