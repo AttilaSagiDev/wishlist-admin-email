@@ -42,4 +42,56 @@ class Config implements ConfigInterface
             ScopeInterface::SCOPE_WEBSITE
         );
     }
+
+    /**
+     * Get recipient bcc_email
+     *
+     * @return string
+     */
+    public function getRecipientEmail(): string
+    {
+        return $this->scopeConfig->getValue(
+            ConfigInterface::XML_PATH_EMAIL_RECIPIENT,
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
+
+    /**
+     * Get bcc email
+     *
+     * @return string
+     */
+    public function getBccEmail(): string
+    {
+        return $this->scopeConfig->getValue(
+            ConfigInterface::XML_PATH_BCC_RECIPIENT,
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
+
+    /**
+     * Get sender email
+     *
+     * @return string
+     */
+    public function getSenderEmail(): string
+    {
+        return $this->scopeConfig->getValue(
+            ConfigInterface::XML_PATH_EMAIL_SENDER,
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
+
+    /**
+     * Get email template
+     *
+     * @return string
+     */
+    public function getEmailTemplate(): string
+    {
+        return $this->scopeConfig->getValue(
+            ConfigInterface::XML_PATH_EMAIL_TEMPLATE,
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
 }
