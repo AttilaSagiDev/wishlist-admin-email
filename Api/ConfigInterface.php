@@ -58,9 +58,9 @@ interface ConfigInterface
     /**
      * Get bcc email
      *
-     * @return string
+     * @return string|null
      */
-    public function getBccEmail(): string;
+    public function getBccEmail(): ?string;
 
     /**
      * Get sender email

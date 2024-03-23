@@ -59,9 +59,9 @@ class Config implements ConfigInterface
     /**
      * Get bcc email
      *
-     * @return string
+     * @return string|null
      */
-    public function getBccEmail(): string
+    public function getBccEmail(): ?string
     {
         return $this->scopeConfig->getValue(
             ConfigInterface::XML_PATH_BCC_RECIPIENT,

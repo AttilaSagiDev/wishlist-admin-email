@@ -6,29 +6,20 @@
 -->
 <!--@subject {{trans "Wishlist Admin Email"}} @-->
 <!--@vars {
-"var data.comment":"Comment",
-"var data.email":"Sender Email",
-"var data.name":"Sender Name",
-"var data.telephone":"Sender Telephone"
+"var store.frontend_name":"Store Name",
+"var items|raw":"Wish List Items"
 } @-->
 
 {{template config_path="design/email/header_template"}}
 
 <table class="message-details">
     <tr>
-        <td>123<strong>{{trans "Name"}}</strong></td>
-        <td>{{var data.name}}</td>
+        <td><strong><p>{{trans "Store name: %store_name" store_name=$store.frontend_name}}</p></strong></td>
     </tr>
     <tr>
-        <td><strong>{{trans "Email"}}</strong></td>
-        <td>{{var data.email}}</td>
-    </tr>
-    <tr>
-        <td><strong>{{trans "Phone"}}</strong></td>
-        <td>{{var data.telephone}}</td>
+        <td><strong>{{trans "Items"}}</strong></td>
+        <td>{{var items|raw}}</td>
     </tr>
 </table>
-<p><strong>{{trans "Message"}}</strong></p>
-<p>{{var data.comment}}</p>
 
 {{template config_path="design/email/footer_template"}}
