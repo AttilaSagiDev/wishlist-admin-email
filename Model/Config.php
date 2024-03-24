@@ -44,6 +44,19 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Get email items selection
+     *
+     * @return int
+     */
+    public function getItemsSelection(): int
+    {
+        return (int)$this->scopeConfig->getValue(
+            ConfigInterface::XML_PATH_EMAIL_ITEMS_SELECTION,
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
+
+    /**
      * Get recipient bcc_email
      *
      * @return string

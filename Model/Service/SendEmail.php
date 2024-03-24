@@ -11,9 +11,11 @@ namespace Space\WishlistAdminEmail\Model\Service;
 use Magento\Framework\Mail\Template\TransportBuilder;
 use Space\WishlistAdminEmail\Api\ConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
+use Magento\Framework\View\LayoutInterface;
 use Psr\Log\LoggerInterface;
 use Magento\Framework\App\Area;
 use Magento\Framework\Exception\LocalizedException;
+use Space\WishlistAdminEmail\Block\Wishlist\WishlistItems;
 
 class SendEmail
 {
@@ -23,14 +25,19 @@ class SendEmail
     private TransportBuilder $transportBuilder;
 
     /**
-     * @var ConfigInterface
-     */
-    private ConfigInterface $config;
-
-    /**
      * @var StoreManagerInterface
      */
     private StoreManagerInterface $storeManager;
+
+    /**
+     * @var LayoutInterface
+     */
+    private LayoutInterface $layout;
+
+    /**
+     * @var ConfigInterface
+     */
+    private ConfigInterface $config;
 
     /**
      * @var LoggerInterface
@@ -41,19 +48,22 @@ class SendEmail
      * Constructor
      *
      * @param TransportBuilder $transportBuilder
-     * @param ConfigInterface $config
      * @param StoreManagerInterface $storeManager
+     * @param LayoutInterface $layout
+     * @param ConfigInterface $config
      * @param LoggerInterface $logger
      */
     public function __construct(
         TransportBuilder $transportBuilder,
-        ConfigInterface $config,
         StoreManagerInterface $storeManager,
+        LayoutInterface $layout,
+        ConfigInterface $config,
         LoggerInterface $logger
     ) {
         $this->transportBuilder = $transportBuilder;
-        $this->config = $config;
         $this->storeManager = $storeManager;
+        $this->layout = $layout;
+        $this->config = $config;
         $this->logger = $logger;
     }
 
@@ -65,32 +75,50 @@ class SendEmail
     public function sendWishlistAdminEmail(): void
     {
         try {
-            $bccEmail = $this->config->getBccEmail() ? $this->config->getBccEmail() : '';
-            $transport = $this->transportBuilder->setTemplateIdentifier(
-                $this->config->getEmailTemplate()
-            )->setTemplateOptions(
-                [
-                    'area' => Area::AREA_FRONTEND,
-                    'store' => $this->storeManager->getStore()->getStoreId(),
-                ]
-            )->setTemplateVars(
-                [
-                    'items' => 'abc123',
-                    'store' => $this->storeManager->getStore()
-                ]
-            )->setFromByScope(
-                $this->config->getSenderEmail()
-            )->addTo(
-                $this->config->getRecipientEmail()
-            )->addBcc(
-                $bccEmail
-            )->getTransport();
+            $items = $this->getWishlistItemsBlockRenderer();
+            if (null !== $items) {
+                $bccEmail = $this->config->getBccEmail() ? $this->config->getBccEmail() : '';
+                $transport = $this->transportBuilder->setTemplateIdentifier(
+                    $this->config->getEmailTemplate()
+                )->setTemplateOptions(
+                    [
+                        'area' => Area::AREA_FRONTEND,
+                        'store' => $this->storeManager->getStore()->getStoreId(),
+                    ]
+                )->setTemplateVars(
+                    [
+                        'items' => $items,
+                        'store' => $this->storeManager->getStore()
+                    ]
+                )->setFromByScope(
+                    $this->config->getSenderEmail()
+                )->addTo(
+                    $this->config->getRecipientEmail()
+                )->addBcc(
+                    $bccEmail
+                )->getTransport();
 
-            $transport->sendMessage();
+                $transport->sendMessage();
+            }
         } catch (LocalizedException $e) {
             $this->logger->error($e->getMessage());
         } catch (\Exception $e) {
             $this->logger->critical($e->getMessage());
         }
+    }
+
+    /**
+     * Get wishlist items block renderer
+     *
+     * @return string|null
+     */
+    private function getWishlistItemsBlockRenderer(): ?string
+    {
+        $itemsSelectionBlock = $this->layout->createBlock(
+            WishlistItems::class,
+            'space.wishlist.admin.email.wishlist.items.selection'
+        );
+
+        return $itemsSelectionBlock?->toHtml();
     }
 }

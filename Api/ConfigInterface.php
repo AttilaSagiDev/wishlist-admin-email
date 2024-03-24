@@ -22,6 +22,11 @@ interface ConfigInterface
     public const XML_PATH_ENABLED = 'wishlist_admin_email/wishlist_admin_email_config/enabled';
 
     /**
+     * Wishlist notification items config path
+     */
+    public const XML_PATH_EMAIL_ITEMS_SELECTION = 'wishlist_admin_email/wishlist_admin_email_email/items_selection';
+
+    /**
      * Recipient email config path
      */
     public const XML_PATH_EMAIL_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/recipient_email';
@@ -47,6 +52,13 @@ interface ConfigInterface
      * @return bool
      */
     public function isEnabled(): bool;
+
+    /**
+     * Get email items selection
+     *
+     * @return int
+     */
+    public function getItemsSelection(): int;
 
     /**
      * Get recipient bcc_email
