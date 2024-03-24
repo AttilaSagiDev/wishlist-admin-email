@@ -13,6 +13,8 @@ use Space\WishlistAdminEmail\Api\ConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\View\LayoutInterface;
 use Psr\Log\LoggerInterface;
+use Magento\Wishlist\Model\Item;
+use Magento\Wishlist\Model\Wishlist;
 use Magento\Framework\App\Area;
 use Magento\Framework\Exception\LocalizedException;
 use Space\WishlistAdminEmail\Block\Wishlist\WishlistItems;
@@ -70,13 +72,15 @@ class SendEmail
     /**
      * Send wishlist admin email
      *
+     * @param Wishlist $wishlist
+     * @param Item $item
      * @return void
      */
-    public function sendWishlistAdminEmail(): void
+    public function sendWishlistAdminEmail(Wishlist $wishlist, Item $item): void
     {
         try {
-            $items = $this->getWishlistItemsBlockRenderer();
-            if (null !== $items) {
+            $itemsBlock = $this->getWishlistItemsBlockRenderer($wishlist, $item);
+            if (null !== $itemsBlock) {
                 $bccEmail = $this->config->getBccEmail() ? $this->config->getBccEmail() : '';
                 $transport = $this->transportBuilder->setTemplateIdentifier(
                     $this->config->getEmailTemplate()
@@ -87,7 +91,7 @@ class SendEmail
                     ]
                 )->setTemplateVars(
                     [
-                        'items' => $items,
+                        'items' => $itemsBlock,
                         'store' => $this->storeManager->getStore()
                     ]
                 )->setFromByScope(
@@ -110,14 +114,16 @@ class SendEmail
     /**
      * Get wishlist items block renderer
      *
+     * @param Wishlist $wishlist
+     * @param Item $item
      * @return string|null
      */
-    private function getWishlistItemsBlockRenderer(): ?string
+    private function getWishlistItemsBlockRenderer(Wishlist $wishlist, Item $item): ?string
     {
         $itemsSelectionBlock = $this->layout->createBlock(
             WishlistItems::class,
             'space.wishlist.admin.email.wishlist.items.selection'
-        );
+        )->setData('wishlist', $wishlist)->setData('item', $item);
 
         return $itemsSelectionBlock?->toHtml();
     }

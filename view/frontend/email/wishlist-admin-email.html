@@ -7,7 +7,7 @@
 <!--@subject {{trans "Wishlist Admin Email"}} @-->
 <!--@vars {
 "var store.frontend_name":"Store Name",
-"var items|raw":"Wish List Items"
+"var items|raw":"Wishlist Items"
 } @-->
 
 {{template config_path="design/email/header_template"}}
@@ -16,10 +16,8 @@
     <tr>
         <td><strong><p>{{trans "Store name: %store_name" store_name=$store.frontend_name}}</p></strong></td>
     </tr>
-    <tr>
-        <td><strong>{{trans "Items"}}</strong></td>
-        <td>{{var items|raw}}</td>
-    </tr>
 </table>
+
+{{var items|raw}}
 
 {{template config_path="design/email/footer_template"}}

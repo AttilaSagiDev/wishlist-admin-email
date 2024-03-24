@@ -57,9 +57,14 @@ class WishlistAddProductObserver implements ObserverInterface
     public function execute(Observer $observer): void
     {
         if ($this->config->isEnabled()) {
-            $this->logger->info('Space_WishlistAdminEmail');
-            $this->logger->info($observer->getEvent()->getData('product')->getName());
-            $this->sendEmail->sendWishlistAdminEmail();
+            $item = $observer->getEvent()->getData('item');
+            $wishlist = $observer->getEvent()->getData('wishlist');
+
+            $this->logger->info('WishlistAddProductObserver');
+            $this->logger->info(get_class($item));
+            $this->logger->info(get_class($wishlist));
+
+            $this->sendEmail->sendWishlistAdminEmail($wishlist, $item);
         }
     }
 }

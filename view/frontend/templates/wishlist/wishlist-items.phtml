@@ -9,5 +9,33 @@
  * @var $escaper \Magento\Framework\Escaper
  */
 ?>
-<p>aaaa123444</p>
-<p><?= $escaper->escapeHtml($block->getItemsSelection()) ?></p>
+<table class="email-items">
+    <thead>
+    <tr>
+        <th class="item-info">
+            <?= $escaper->escapeHtml(__('Items')) ?>
+        </th>
+        <th class="item-qty">
+            <?= $escaper->escapeHtml(__('Qty')) ?>
+        </th>
+        <th class="item-price">
+            <?= $escaper->escapeHtml(__('View')) ?>
+        </th>
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="col product">
+                <?= $escaper->escapeHtml($block->getWishlistItemName()) ?>
+            </td>
+            <td class="col">
+                <?= $escaper->escapeHtml(__('getItemsSelection: %1', $block->getItemsSelection())) ?>
+            </td>
+            <td class="col">
+                <a href="#" title="<?= $escaper->escapeHtml($block->getWishlistItemName()) ?>">
+                    <?= $escaper->escapeHtml(__('View')) ?>
+                </a>
+            </td>
+        </tr>
+    </tbody>
+</table>
