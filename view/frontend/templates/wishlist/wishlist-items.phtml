@@ -12,30 +12,83 @@
 <table class="email-items">
     <thead>
     <tr>
+        <th class="item-info"></th>
         <th class="item-info">
-            <?= $escaper->escapeHtml(__('Items')) ?>
-        </th>
-        <th class="item-qty">
-            <?= $escaper->escapeHtml(__('Qty')) ?>
+            <strong><?= $escaper->escapeHtml(__('Product Name')) ?></strong>
         </th>
         <th class="item-price">
-            <?= $escaper->escapeHtml(__('View')) ?>
+            <strong><?= $escaper->escapeHtml(__('Price')) ?></strong>
         </th>
+        <th class="item-qty">
+            <strong><?= $escaper->escapeHtml(__('Qty')) ?></strong>
+        </th>
+        <th class="item-info"></th>
     </tr>
     </thead>
-    <tbody>
+    <?php if ($block->getShowAllItems()) : ?>
+        <tbody>
         <tr>
-            <td class="col product">
-                <?= $escaper->escapeHtml($block->getWishlistItemName()) ?>
+            <td class="item-info">
+                <p>all items image</p>
             </td>
-            <td class="col">
-                <?= $escaper->escapeHtml(__('getItemsSelection: %1', $block->getItemsSelection())) ?>
+            <td class="item-info">
+                <p>all items name</p>
             </td>
-            <td class="col">
-                <a href="#" title="<?= $escaper->escapeHtml($block->getWishlistItemName()) ?>">
-                    <?= $escaper->escapeHtml(__('View')) ?>
+            <td class="item-price">
+                <p>all items price</p>
+            </td>
+            <td class="item-qty">
+                <p>all items qty</p>
+            </td>
+            <td class="item-info">
+                <a href="#" title="#">
+                    <?= $escaper->escapeHtml(__('View Product')) ?>
                 </a>
             </td>
         </tr>
-    </tbody>
+        </tbody>
+    <?php else : ?>
+        <?php $item = $block->getItem(); ?>
+        <?php if (null !== $item) : ?>
+            <?php $product = $block->getProduct(); ?>
+            <tbody>
+                <tr>
+                    <td class="item-info">
+                        <a href="<?= $escaper->escapeUrl($item->getProductUrl()) ?>">
+                            <img src="<?= $escaper->escapeUrl($block->getImage($product)) ?>"
+                                 alt="<?= $escaper->escapeHtml($product->getName()) ?>" />
+                        </a>
+                    </td>
+                    <td class="item-info">
+                        <a href="<?= $escaper->escapeUrl($item->getProductUrl()) ?>">
+                            <p class="product-name"><?= $escaper->escapeHtml($product->getName()) ?></p>
+                        </a>
+                        <p class="sku">
+                            <?= $escaper->escapeHtml(__('Sku')) ?>: <?= $escaper->escapeHtml($product->getSku()) ?>
+                        </p>
+                    </td>
+                    <td class="item-price">
+                        <?= $block->getProductPriceHtml($product) ?>
+                    </td>
+                    <td class="item-qty">
+                        <?= $escaper->escapeHtml($item->getQty()) ?>
+                    </td>
+                    <td class="item-info">
+                        <a href="<?= $escaper->escapeUrl($item->getProductUrl()) ?>"
+                           title="<?= $escaper->escapeHtml($product->getName()) ?>">
+                            <?= $escaper->escapeHtml(__('View Product')) ?>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        <?php else : ?>
+            <tbody>
+                <tr>
+                    <td class="item-info" colspan="5">
+                        <p><?= $escaper->escapeHtml(__('Wishlist item not found.')) ?></p>
+                    </td>
+                </tr>
+            </tbody>
+        <?php endif; ?>
+    <?php endif; ?>
 </table>
