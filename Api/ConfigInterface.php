@@ -22,6 +22,16 @@ interface ConfigInterface
     public const XML_PATH_ENABLED = 'wishlist_admin_email/wishlist_admin_email_config/enabled';
 
     /**
+     * Store config is customer segmentation enabled
+     */
+    public const XML_PATH_SEGMENTATION = 'wishlist_admin_email/wishlist_admin_email_config/enable_segmentation';
+
+    /**
+     * Store config enabled customer groups
+     */
+    public const XML_PATH_CUSTOMER_GROUPS = 'wishlist_admin_email/wishlist_admin_email_config/customer_groups';
+
+    /**
      * Wishlist notification items config path
      */
     public const XML_PATH_EMAIL_ITEMS_SELECTION = 'wishlist_admin_email/wishlist_admin_email_email/items_selection';
@@ -32,9 +42,9 @@ interface ConfigInterface
     public const XML_PATH_EMAIL_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/recipient_email';
 
     /**
-     * Recipient bcc email config path
+     * Recipient cc email config path
      */
-    public const XML_PATH_BCC_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/bcc_email';
+    public const XML_PATH_CC_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/cc_email';
 
     /**
      * Sender email config path
@@ -54,6 +64,20 @@ interface ConfigInterface
     public function isEnabled(): bool;
 
     /**
+     * Check if customer segmentation enabled
+     *
+     * @return bool
+     */
+    public function isCustomerSegmentationEnabled(): bool;
+
+    /**
+     * Get enabled customer groups
+     *
+     * @return array|bool
+     */
+    public function getEnabledCustomerGroups(): ?array;
+
+    /**
      * Get email items selection
      *
      * @return int
@@ -61,18 +85,18 @@ interface ConfigInterface
     public function getItemsSelection(): int;
 
     /**
-     * Get recipient bcc_email
+     * Get recipient email
      *
      * @return string
      */
     public function getRecipientEmail(): string;
 
     /**
-     * Get bcc email
+     * Get cc email
      *
      * @return string|null
      */
-    public function getBccEmail(): ?string;
+    public function getCcEmail(): ?string;
 
     /**
      * Get sender email

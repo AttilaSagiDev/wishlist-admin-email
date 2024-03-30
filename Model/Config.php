@@ -44,6 +44,38 @@ class Config implements ConfigInterface
     }
 
     /**
+     * Check if customer segmentation enabled
+     *
+     * @return bool
+     */
+    public function isCustomerSegmentationEnabled(): bool
+    {
+        return $this->scopeConfig->isSetFlag(
+            ConfigInterface::XML_PATH_SEGMENTATION,
+            ScopeInterface::SCOPE_WEBSITE
+        );
+    }
+
+    /**
+     * Get enabled customer groups
+     *
+     * @return array|false
+     */
+    public function getEnabledCustomerGroups(): ?array
+    {
+        $customerGroups = $this->scopeConfig->getValue(
+            ConfigInterface::XML_PATH_CUSTOMER_GROUPS,
+            ScopeInterface::SCOPE_WEBSITE
+        );
+
+        if (!empty($customerGroups)) {
+            return explode(',', $customerGroups);
+        }
+
+        return false;
+    }
+
+    /**
      * Get email items selection
      *
      * @return int
@@ -57,7 +89,7 @@ class Config implements ConfigInterface
     }
 
     /**
-     * Get recipient bcc_email
+     * Get recipient email
      *
      * @return string
      */
@@ -70,14 +102,14 @@ class Config implements ConfigInterface
     }
 
     /**
-     * Get bcc email
+     * Get cc email
      *
      * @return string|null
      */
-    public function getBccEmail(): ?string
+    public function getCcEmail(): ?string
     {
         return $this->scopeConfig->getValue(
-            ConfigInterface::XML_PATH_BCC_RECIPIENT,
+            ConfigInterface::XML_PATH_CC_RECIPIENT,
             ScopeInterface::SCOPE_WEBSITE
         );
     }

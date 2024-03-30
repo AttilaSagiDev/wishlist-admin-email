@@ -81,7 +81,7 @@ class SendEmail
         try {
             $itemsBlock = $this->getWishlistItemsBlockRenderer($wishlist, $item);
             if (null !== $itemsBlock) {
-                $bccEmail = $this->config->getBccEmail() ? $this->config->getBccEmail() : '';
+                $ccEmail = $this->config->getCcEmail() ? $this->config->getCcEmail() : '';
                 $transport = $this->transportBuilder->setTemplateIdentifier(
                     $this->config->getEmailTemplate()
                 )->setTemplateOptions(
@@ -98,8 +98,8 @@ class SendEmail
                     $this->config->getSenderEmail()
                 )->addTo(
                     $this->config->getRecipientEmail()
-                )->addBcc(
-                    $bccEmail
+                )->addCc(
+                    $ccEmail
                 )->getTransport();
 
                 $transport->sendMessage();
