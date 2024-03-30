@@ -5,6 +5,7 @@
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Space\WishlistAdminEmail\Api\ConfigInterface" type="Space\WishlistAdminEmail\Model\Config" />
 </config>

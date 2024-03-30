@@ -10,8 +10,8 @@ namespace Space\WishlistAdminEmail\Observer\Wishlist;
 
 use Magento\Framework\Event\ObserverInterface;
 use Magento\Framework\Event\Observer;
+use Space\WishlistAdminEmail\Model\Service\SendEmail;
 use Space\WishlistAdminEmail\Api\ConfigInterface;
-use Psr\Log\LoggerInterface;
 
 class WishlistAddProductObserver implements ObserverInterface
 {
@@ -21,22 +21,22 @@ class WishlistAddProductObserver implements ObserverInterface
     private ConfigInterface $config;
 
     /**
-     * @var LoggerInterface
+     * @var SendEmail
      */
-    private LoggerInterface $logger;
+    private SendEmail $sendEmail;
 
     /**
      * Constructor
      *
      * @param ConfigInterface $config
-     * @param LoggerInterface $logger
+     * @param SendEmail $sendEmail
      */
     public function __construct(
         ConfigInterface $config,
-        LoggerInterface $logger
+        SendEmail $sendEmail
     ) {
         $this->config = $config;
-        $this->logger = $logger;
+        $this->sendEmail = $sendEmail;
     }
 
     /**
@@ -48,8 +48,9 @@ class WishlistAddProductObserver implements ObserverInterface
     public function execute(Observer $observer): void
     {
         if ($this->config->isEnabled()) {
-            $this->logger->info('Space_WishlistAdminEmail');
-            $this->logger->info($observer->getEvent()->getData('product')->getName());
+            $item = $observer->getEvent()->getData('item');
+            $wishlist = $observer->getEvent()->getData('wishlist');
+            $this->sendEmail->sendWishlistAdminEmail($wishlist, $item);
         }
     }
 }

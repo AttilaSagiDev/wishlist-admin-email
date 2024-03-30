@@ -1,0 +1,32 @@
+<!--
+/**
+ * Copyright (c) 2024 Attila Sagi
+ * @license http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<!--@subject {{trans "Wishlist Admin Email"}} @-->
+<!--@vars {
+"var store.frontend_name":"Store Name",
+"var items|raw":"Wishlist Items"
+} @-->
+
+{{template config_path="design/email/header_template"}}
+
+<table>
+    <tr class="email-intro">
+        <td>
+            <h3><strong>{{trans "Wishlist Update!"}}</strong></h3>
+            <p><strong>{{trans "Details:"}}</strong></p>
+            <p>{{trans "Store name: %store_name" store_name=$store.frontend_name}}</p>
+            <p>{{trans "Customer Name:"}}</p>
+            <p>{{trans "Customer Email:"}}</p>
+        </td>
+    </tr>
+    <tr class="email-information">
+        <td>
+            {{var items|raw}}
+        </td>
+    </tr>
+</table>
+
+{{template config_path="design/email/footer_template"}}

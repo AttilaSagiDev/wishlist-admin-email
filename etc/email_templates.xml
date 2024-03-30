@@ -8,6 +8,6 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
     <template id="wishlist_admin_email_wishlist_admin_email_email_email_template"
-              label="Wishlist Admin Email" file="submitted_form.html" type="html"
+              label="Wishlist Admin Email" file="wishlist-admin-email.html" type="html"
               module="Space_WishlistAdminEmail" area="frontend"/>
 </config>

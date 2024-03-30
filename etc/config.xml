@@ -13,6 +13,12 @@
                 <enabled>0</enabled>
                 <enable_segmentation>0</enable_segmentation>
             </wishlist_admin_email_config>
+            <wishlist_admin_email_email>
+                <items_selection>1</items_selection>
+                <recipient_email><![CDATA[hello@example.com]]></recipient_email>
+                <sender_email_identity>custom2</sender_email_identity>
+                <email_template>wishlist_admin_email_wishlist_admin_email_email_email_template</email_template>
+            </wishlist_admin_email_email>
         </wishlist_admin_email>
     </default>
 </config>
