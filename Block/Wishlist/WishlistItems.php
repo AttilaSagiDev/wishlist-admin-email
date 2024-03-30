@@ -14,6 +14,8 @@ use Magento\Catalog\Model\Product\Configuration\Item\ItemResolverInterface;
 use Magento\Catalog\Helper\Image as ImageHelper;
 use Space\WishlistAdminEmail\Api\ConfigInterface;
 use Magento\Framework\App\ObjectManager;
+use Magento\Wishlist\Model\ResourceModel\Item\Collection as WishlistItemCollection;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Space\WishlistAdminEmail\Model\Config\Source\ItemsSelection;
 use Magento\Wishlist\Model\Item;
 use Magento\Wishlist\Model\Wishlist;
@@ -78,13 +80,34 @@ class WishlistItems extends Template
     }
 
     /**
+     * Get wishlist items
+     *
+     * @return WishlistItemCollection|null
+     */
+    public function getWishlistItems(): ?WishlistItemCollection
+    {
+        try {
+            return null !== $this->getWishlist()
+                ? $this->getWishlist()->getItemCollection()
+                : null;
+        } catch (NoSuchEntityException $e) {
+            $this->_logger->error($e->getMessage());
+        } catch (\Exception $e) {
+            $this->_logger->critical($e->getMessage());
+        }
+
+        return null;
+    }
+
+    /**
      * Get product
      *
+     * @param Item $item
      * @return ProductInterface
      */
-    public function getProduct(): ProductInterface
+    public function getProduct(Item $item): ProductInterface
     {
-        return $this->itemResolver->getFinalProduct($this->getItem());
+        return $this->itemResolver->getFinalProduct($item);
     }
 
     /**

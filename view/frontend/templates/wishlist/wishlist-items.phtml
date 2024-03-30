@@ -25,32 +25,67 @@
         <th class="item-info"></th>
     </tr>
     </thead>
-    <?php if ($block->getShowAllItems()) : ?>
-        <tbody>
-        <tr>
-            <td class="item-info">
-                <p>all items image</p>
-            </td>
-            <td class="item-info">
-                <p>all items name</p>
-            </td>
-            <td class="item-price">
-                <p>all items price</p>
-            </td>
-            <td class="item-qty">
-                <p>all items qty</p>
-            </td>
-            <td class="item-info">
-                <a href="#" title="#">
-                    <?= $escaper->escapeHtml(__('View Product')) ?>
-                </a>
-            </td>
-        </tr>
-        </tbody>
-    <?php else : ?>
+    <?php if ($block->getShowAllItems()): ?>
+        <?php $currentItem = $block->getItem(); ?>
+        <?php $items = $block->getWishlistItems(); ?>
+        <?php if ($items): ?>
+            <tbody>
+            <?php foreach ($items as $item): ?>
+                <?php $product = $block->getProduct($item); ?>
+                <tr>
+                    <td class="item-info">
+                        <a href="<?= $escaper->escapeUrl($item->getProductUrl()) ?>">
+                            <img src="<?= $escaper->escapeUrl($block->getImage($product)) ?>"
+                                 alt="<?= $escaper->escapeHtml($product->getName()) ?>" />
+                        </a>
+                    </td>
+                    <td class="item-info">
+                        <a href="<?= $escaper->escapeUrl($item->getProductUrl()) ?>">
+                            <p class="product-name"><?= $escaper->escapeHtml($product->getName()) ?></p>
+                        </a>
+                        <p class="sku">
+                            <?= $escaper->escapeHtml(__('Sku')) ?>: <?= $escaper->escapeHtml($product->getSku()) ?>
+                        </p>
+                        <?php if ($currentItem->getId() === $item->getId()): ?>
+                            <p class="new" style="color: red;">
+                                <?= $escaper->escapeHtml(__('Just Added')) ?>
+                            </p>
+                        <?php endif; ?>
+                        <?php if ($item->getDescription()): ?>
+                            <p class="description">
+                                <?= $escaper->escapeHtml(__('Comment')) ?>:<br />
+                                <?= $escaper->escapeHtml($item->getDescription()) ?>
+                            </p>
+                        <?php endif; ?>
+                    </td>
+                    <td class="item-price">
+                        <?= $block->getProductPriceHtml($product) ?>
+                    </td>
+                    <td class="item-qty">
+                        <?= $escaper->escapeHtml((int)$item->getQty()) ?>
+                    </td>
+                    <td class="item-info">
+                        <a href="<?= $escaper->escapeUrl($item->getProductUrl()) ?>"
+                           title="<?= $escaper->escapeHtml($product->getName()) ?>">
+                            <?= $escaper->escapeHtml(__('View Product')) ?>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+            </tbody>
+        <?php else: ?>
+            <tbody>
+                <tr>
+                    <td class="item-info" colspan="5">
+                        <p><?= $escaper->escapeHtml(__('Wishlist items not found.')) ?></p>
+                    </td>
+                </tr>
+            </tbody>
+        <?php endif; ?>
+    <?php else: ?>
         <?php $item = $block->getItem(); ?>
-        <?php if (null !== $item) : ?>
-            <?php $product = $block->getProduct(); ?>
+        <?php if (null !== $item): ?>
+            <?php $product = $block->getProduct($item); ?>
             <tbody>
                 <tr>
                     <td class="item-info">
@@ -66,6 +101,15 @@
                         <p class="sku">
                             <?= $escaper->escapeHtml(__('Sku')) ?>: <?= $escaper->escapeHtml($product->getSku()) ?>
                         </p>
+                        <p class="new" style="color: red;">
+                            <?= $escaper->escapeHtml(__('Just Added')) ?>
+                        </p>
+                        <?php if ($item->getDescription()): ?>
+                            <p class="description">
+                                <?= $escaper->escapeHtml(__('Comment')) ?>:<br />
+                                <?= $escaper->escapeHtml($item->getDescription()) ?>
+                            </p>
+                        <?php endif; ?>
                     </td>
                     <td class="item-price">
                         <?= $block->getProductPriceHtml($product) ?>
@@ -81,7 +125,7 @@
                     </td>
                 </tr>
             </tbody>
-        <?php else : ?>
+        <?php else: ?>
             <tbody>
                 <tr>
                     <td class="item-info" colspan="5">
