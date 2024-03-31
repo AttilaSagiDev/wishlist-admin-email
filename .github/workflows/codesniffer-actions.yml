@@ -15,6 +15,10 @@ jobs:
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
+      - name: Show PHP version
+        run: |
           php -v
-          phpcs -i
+      - name: Install Code Sniffer
+        run: |
+          vendor/bin/phpcs -i
       - run: echo "This job's status is ${{ job.status }}."
