@@ -16,15 +16,26 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
-      - name: Checkout
+      - name: Show PHP version
+        run: |
+          php -v
+      - name: Checkout Magento Coding Standard
         uses: actions/checkout@v4
         with:
           repository: magento/magento-coding-standard
           path: './magento-coding-standard'
+      - name: Install Magento Coding Standard
+        run: |
+          cd magento-coding-standard
+          composer install
+      - name: Install Magento Coding Standard
+        run: |
+          cd magento-coding-standard
+          composer install
+      - name: Show PHPCS information
+        run: |
+          ls
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
-      - name: Show PHP version
-        run: |
-          php -v
       - run: echo "This job's status is ${{ job.status }}."
