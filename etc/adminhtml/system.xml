@@ -56,11 +56,11 @@
                     <validate>required-entry validate-email</validate>
                     <comment>Please enter the email address where notification will be sent.</comment>
                 </field>
-                <field id="bcc_email" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                <field id="cc_email" translate="label comment" type="text" sortOrder="30" showInDefault="1"
                        showInWebsite="1" showInStore="0" canRestore="1">
-                    <label>Send BCC Emails To</label>
+                    <label>Send CC Emails To</label>
                     <validate>required-entry validate-email</validate>
-                    <comment>Please enter the bcc copy email address where notification will be also sent.</comment>
+                    <comment>Please enter the cc copy email address where notification will be also sent.</comment>
                 </field>
                 <field id="sender_email_identity" translate="label comment" type="select" sortOrder="40" showInDefault="1"
                        showInWebsite="1" showInStore="0" canRestore="1">

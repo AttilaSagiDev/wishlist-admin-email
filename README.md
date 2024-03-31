@@ -11,7 +11,7 @@ The email also contains the newly added product details. In the extension's conf
 
 The extension can be configured only for specified customer groups. The product prices include or exclude tax in the notification email. This depends on proper tax configuration of the store. 
 
-The module's configuration also allows setting custom email address (and separate bcc email address) where the notification will be sent. 
+The module's configuration also allows setting custom email address (and separate cc email address) where the notification will be sent. 
 
 The extension comes with a new email template which can be easily loaded and edited at the transactional emails section in the admin panel.
 
@@ -22,7 +22,7 @@ The extension comes with a new email template which can be easily loaded and edi
 - Show prices excluding or including tax based on store settings.
 - Enable customer groups segmentation.
 - Can be configured to send the whole wish list or only recently added product.
-- Configurable email address and bcc email as well.
+- Configurable email address and cc email as well.
 - Custom email template.
 - Multistore support.
 - Supported languages: English. 
@@ -77,7 +77,7 @@ Email Wish List Items: Please select to send only the recently added item, or th
 
 Send Emails To: Please enter the email address where notification will be sent.
  
-Send BCC Emails To: Please enter the bcc copy email address where notification will be also sent.
+Send CC Emails To: Please enter the cc copy email address where notification will be also sent.
 
 Email Sender: Please select the email sender from store email addresses.
 

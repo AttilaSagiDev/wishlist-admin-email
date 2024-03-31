@@ -13,8 +13,9 @@ use Space\WishlistAdminEmail\Api\ConfigInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\View\LayoutInterface;
 use Psr\Log\LoggerInterface;
-use Magento\Wishlist\Model\Item;
 use Magento\Wishlist\Model\Wishlist;
+use Magento\Wishlist\Model\Item;
+use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\Area;
 use Magento\Framework\Exception\LocalizedException;
 use Space\WishlistAdminEmail\Block\Wishlist\WishlistItems;
@@ -74,14 +75,15 @@ class SendEmail
      *
      * @param Wishlist $wishlist
      * @param Item $item
+     * @param CustomerInterface $customer
      * @return void
      */
-    public function sendWishlistAdminEmail(Wishlist $wishlist, Item $item): void
+    public function sendWishlistAdminEmail(Wishlist $wishlist, Item $item, CustomerInterface $customer): void
     {
         try {
             $itemsBlock = $this->getWishlistItemsBlockRenderer($wishlist, $item);
             if (null !== $itemsBlock) {
-                $bccEmail = $this->config->getBccEmail() ? $this->config->getBccEmail() : '';
+                $ccEmail = $this->config->getCcEmail() ? $this->config->getCcEmail() : '';
                 $transport = $this->transportBuilder->setTemplateIdentifier(
                     $this->config->getEmailTemplate()
                 )->setTemplateOptions(
@@ -92,14 +94,16 @@ class SendEmail
                 )->setTemplateVars(
                     [
                         'items' => $itemsBlock,
-                        'store' => $this->storeManager->getStore()
+                        'store' => $this->storeManager->getStore(),
+                        'customer_name' => $customer->getFirstname() . ' ' . $customer->getLastname(),
+                        'customer_email' => $customer->getEmail(),
                     ]
                 )->setFromByScope(
                     $this->config->getSenderEmail()
                 )->addTo(
                     $this->config->getRecipientEmail()
-                )->addBcc(
-                    $bccEmail
+                )->addCc(
+                    $ccEmail
                 )->getTransport();
 
                 $transport->sendMessage();
