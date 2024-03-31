@@ -79,9 +79,15 @@ class WishlistAddProductObserver implements ObserverInterface
                     return;
                 }
 
-                $item = $observer->getEvent()->getData('item');
-                $wishlist = $observer->getEvent()->getData('wishlist');
-                $this->sendEmail->sendWishlistAdminEmail($wishlist, $item);
+                if ($this->customerSession->getCustomerId()) {
+                    $item = $observer->getEvent()->getData('item');
+                    $wishlist = $observer->getEvent()->getData('wishlist');
+                    $this->sendEmail->sendWishlistAdminEmail(
+                        $wishlist,
+                        $item,
+                        $this->customerSession->getCustomerData()
+                    );
+                }
             } catch (LocalizedException $e) {
                 $this->logger->error($e->getMessage());
             } catch (\Exception $e) {
