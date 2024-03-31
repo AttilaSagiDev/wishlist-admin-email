@@ -1,8 +1,8 @@
-name: Code Sniffer Actions
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
-on: [pull_request]
+name: Code Sniffer Action
+run-name: Code Sniffer Testing Action
+on: [pull_request, push]
 jobs:
-  Explore-GitHub-Actions:
+  Code-Sniffer-Action:
     runs-on: ubuntu-latest
     steps:
       - run: echo "The job was automatically triggered by a ${{ github.event_name }} event."
@@ -16,4 +16,5 @@ jobs:
         run: |
           ls ${{ github.workspace }}
           php -v
+          phpcs -i
       - run: echo "This job's status is ${{ job.status }}."
