@@ -28,13 +28,10 @@ jobs:
         run: |
           cd magento-coding-standard
           composer install
-      - name: Install Magento Coding Standard
-        run: |
-          cd magento-coding-standard
-          composer install
       - name: Show PHPCS information
         run: |
-          ls
+          cd magento-coding-standard
+          vendor/bin/phpcs -i
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
