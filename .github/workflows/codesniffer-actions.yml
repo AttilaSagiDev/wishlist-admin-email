@@ -16,6 +16,13 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: 8.2
+      - name: Clone Magento Coding Standard PUBLIC repository
+        uses: magento/magento-coding-standard@develop
+        with:
+          depth: 1
+          branch: 'develop'
+          owner: 'magento'
+          repository: 'magento-coding-standard'
       - name: List files in the repository
         run: |
           ls ${{ github.workspace }}
