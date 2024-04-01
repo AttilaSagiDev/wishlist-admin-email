@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright (c) 2024 Attila Sagi
+ * @license http://www.opensource.org/licenses/mit-license.html  MIT License
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="space_tab" translate="label" sortOrder="500">
+            <label>Space Extensions</label>
+        </tab>
+        <section id="wishlist_admin_email" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1"
+                 showInStore="1">
+            <label>Wishlist Admin Email</label>
+            <tab>space_tab</tab>
+            <resource>Space_WishlistAdminEmail::wishlist_admin_email</resource>
+            <group id="wishlist_admin_email_config" translate="label" type="text" sortOrder="10" showInDefault="1"
+                   showInWebsite="1" showInStore="0">
+                <label>Configuration</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable Extension</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable extension.</comment>
+                </field>
+                <field id="enable_segmentation" translate="label comment" type="select" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enable Customer Segmentation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Please select yes, if you would like to set specified customer groups for notification.</comment>
+                </field>
+                <field id="customer_groups" translate="label comment" type="multiselect" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Enabled Customer Groups</label>
+                    <source_model>Space\WishlistAdminEmail\Model\Config\Source\CustomerGroups</source_model>
+                    <depends>
+                        <field id="enable_segmentation">1</field>
+                    </depends>
+                    <comment>Please select customer groups.</comment>
+                </field>
+            </group>
+            <group id="wishlist_admin_email_email" translate="label" type="text" sortOrder="20" showInDefault="1"
+                   showInWebsite="1" showInStore="0">
+                <label>Configuration</label>
+                <field id="items_selection" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Email Wishlist Items</label>
+                    <source_model>Space\WishlistAdminEmail\Model\Config\Source\ItemsSelection</source_model>
+                    <comment>Please select to send only the recently added item, or the whole wish list. In the second option the newly added item will be marked.</comment>
+                </field>
+                <field id="recipient_email" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Send Emails To</label>
+                    <validate>required-entry validate-email</validate>
+                    <comment>Please enter the email address where notification will be sent.</comment>
+                </field>
+                <field id="cc_email" translate="label comment" type="text" sortOrder="30" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Send CC Emails To</label>
+                    <validate>required-entry validate-email</validate>
+                    <comment>Please enter the cc copy email address where notification will be also sent.</comment>
+                </field>
+                <field id="sender_email_identity" translate="label comment" type="select" sortOrder="40" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Email Sender</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                    <comment>Please select the email sender from store email addresses.</comment>
+                </field>
+                <field id="email_template" translate="label comment" type="select" sortOrder="50" showInDefault="1"
+                       showInWebsite="1" showInStore="0" canRestore="1">
+                    <label>Email Template</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <comment>Email template chosen based on theme fallback when "Default" option is selected.</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
