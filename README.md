@@ -44,7 +44,7 @@ Clear the store cache under var/cache and all cookies for your store domain.
 3. Upload Files 
 Unzip extension contents on your computer and navigate inside the extracted folder. Create folder app / code on your webserver if you don't have it already. Using your FTP client upload content of the directory to your store root / app / code folder.
 
-5. Enable extension
+4. Enable extension
 Please use the following commands in the /bin directory of your Magento 2.0 instance:
 
     php magento module:enable Space_ WishlistAdminEmail
