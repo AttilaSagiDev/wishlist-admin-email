@@ -1,6 +1,6 @@
 name: Code Sniffer Action
 run-name: Code Sniffer Testing Action
-on: [pull_request, push]
+on: [pull_request]
 jobs:
   Code-Sniffer-Action:
     runs-on: ubuntu-latest
