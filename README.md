@@ -19,7 +19,6 @@ The extension comes with a new email template which can be easily loaded and edi
 
 - Module enable / disable.
 - Automatically sends an email notification when the customer adds a new product to the wish list.
-- Show prices excluding or including tax based on store settings.
 - Enable customer groups segmentation.
 - Can be configured to send the whole wish list or only recently added product.
 - Configurable email address and cc email as well.
@@ -30,22 +29,19 @@ The extension comes with a new email template which can be easily loaded and edi
 It is a separate module that does not change the default Magento files. 
  
 Support: 
-Magento Community Edition  2.1.x, 2.2.x
+Magento Community Edition  2.4.x
 
 ## Installation ##
 
-** Important! Always install and test the extension in your development enviroment, and not on your live or production server. **
+** Important! Always install and test the extension in your development environment, and not on your live or production server. **
  
 1. Backup Your Data 
 Backup your store database and web directory. 
  
 2. Clear Cache and cookies 
-Clear the store cache under var/cache and all cookies for your store domain. 
- 
-3. Disable Compilation 
-Disable Compilation, if it’s enabled.
+Clear the store cache under var/cache and all cookies for your store domain.
 
-4. Upload Files 
+3. Upload Files 
 Unzip extension contents on your computer and navigate inside the extracted folder. Create folder app / code on your webserver if you don't have it already. Using your FTP client upload content of the directory to your store root / app / code folder.
 
 5. Enable extension
@@ -85,6 +81,10 @@ Email Template: Please select the custom email template or use the default.
 
 ## Change Log ##
 
+Version 1.1.0 - April 1, 2024
+- Compatibility with Magento 2.4.x
+- Refactor whole code
+
 Version 1.0.2 - January 21, 2018
 - Compatibility with Magento 2.2.x
 
@@ -94,18 +94,10 @@ Version 1.0.1 - February 20, 2017
 Version 1.0.0 - June 12, 2016
 - Compatibility with Magento 2.0.x
 - Compatibility with Magento 2.1.x
-
-## Troubleshooting ##
- 
-1. After the extension installation I receive a 404 error in Stores / Configuration / Wish List Admin Email. 
-Clear the store cache, browser cookies, logout from backend and login back. 
- 
-2. My configuration changes do not appear on the store.
-Clear the store cache, clear your browser cache and domain cookies and refresh the page.
  
 ## Support ##
  
-If you have any questions about the extension, please contact us.
+If you have any questions about the extension, please contact with me.
 
 ## License ##
 
