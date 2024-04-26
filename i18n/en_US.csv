@@ -1,0 +1,35 @@
+"Send only newly added","Send only newly added"
+"Send entire wishlist","Send entire wishlist"
+"Product Name","Product Name"
+Price,Price
+Qty,Qty
+Sku,Sku
+"Just Added","Just Added"
+Comment,Comment
+"View Product","View Product"
+"Wishlist items not found.","Wishlist items not found."
+"Wishlist item not found.","Wishlist item not found."
+"Wishlist Admin Email","Wishlist Admin Email"
+"Wishlist Update!","Wishlist Update!"
+Details:,Details:
+"Store name: %store_name","Store name: %store_name"
+"Customer Name: %customer_name","Customer Name: %customer_name"
+"Customer Email: %customer_email","Customer Email: %customer_email"
+"Space Extensions","Space Extensions"
+Configuration,Configuration
+"Enable Extension","Enable Extension"
+"Enable extension.","Enable extension."
+"Enable Customer Segmentation","Enable Customer Segmentation"
+"Please select yes, if you would like to set specified customer groups for notification.","Please select yes, if you would like to set specified customer groups for notification."
+"Enabled Customer Groups","Enabled Customer Groups"
+"Please select customer groups.","Please select customer groups."
+"Email Wishlist Items","Email Wishlist Items"
+"Please select to send only the recently added item, or the whole wish list. In the second option the newly added item will be marked.","Please select to send only the recently added item, or the whole wish list. In the second option the newly added item will be marked."
+"Send Emails To","Send Emails To"
+"Please enter the email address where notification will be sent.","Please enter the email address where notification will be sent."
+"Send CC Emails To","Send CC Emails To"
+"Please enter the cc copy email address where notification will be also sent.","Please enter the cc copy email address where notification will be also sent."
+"Email Sender","Email Sender"
+"Please select the email sender from store email addresses.","Please select the email sender from store email addresses."
+"Email Template","Email Template"
+"Email template chosen based on theme fallback when ""Default"" option is selected.","Email template chosen based on theme fallback when ""Default"" option is selected."
