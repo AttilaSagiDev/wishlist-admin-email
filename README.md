@@ -1,4 +1,4 @@
-# **Magento 2.0 Wishlist Admin Email Extension** #
+# **Magento 2 Wishlist Admin Email Extension** #
 
 
 ## Description ##
@@ -28,46 +28,41 @@ The extension comes with a new email template which can be easily loaded and edi
  
 It is a separate module that does not change the default Magento files. 
  
-Support: 
-Magento Community Edition  2.4.x
+Support:
+- Magento Community Edition  2.4.x
+- Adobe Commerce 2.4.x
 
 ## Installation ##
 
 ** Important! Always install and test the extension in your development environment, and not on your live or production server. **
  
-1. Backup Your Data 
-Backup your store database and web directory. 
+1. Backup Your Data
+   
+   Backup your store database and whole Magento 2 directory. 
  
-2. Clear Cache and cookies 
-Clear the store cache under var/cache and all cookies for your store domain.
+2. Enable extension
 
-3. Upload Files 
-Unzip extension contents on your computer and navigate inside the extracted folder. Create folder app / code on your webserver if you don't have it already. Using your FTP client upload content of the directory to your store root / app / code folder.
+   Please use the following commands in your Magento 2 console:
+   ```
+   bin/magento module:enable Space_ WishlistAdminEmail
 
-4. Enable extension
-Please use the following commands in the /bin directory of your Magento 2.0 instance:
-
-    php magento module:enable Space_ WishlistAdminEmail
-
-    php magento setup:upgrade 
-
-One more time clear the cache under var/cache and var/page_cache login to Magento backend (admin panel).
+   bin/magento setup:upgrade
+   ```
 
 ## Configuration ##
  
 Login to Magento backend (admin panel). You can find the module configuration here: Stores / Configuration, in the left menu Space Extensions / Wishlist Admin Email.
 
-Settings:
+### Settings: ###
 
-** Basic **
+### Basic ###
 
 Enable Extension: Here you can enable the extension.
 
 Enable Customer Segmentation: Please select yes, if you would like to set specified customer groups for notification.
 
 Enabled Customer Groups (if Customer Segmentation enabled): Please select customer groups.
- 
-** Email Options **
+### Email Options ###
 
 Email Wish List Items: Please select to send only the recently added item, or the whole wish list. In the second option, the newly added item will be marked.
 
@@ -80,6 +75,10 @@ Email Sender: Please select the email sender from store email addresses.
 Email Template: Please select the custom email template or use the default.
 
 ## Change Log ##
+
+Version 1.1.1 - April 26, 2024
+- Add PHP 8.3 support
+- Add missing translation
 
 Version 1.1.0 - April 1, 2024
 - Compatibility with Magento 2.4.x
