@@ -76,6 +76,11 @@ Email Template: Please select the custom email template or use the default.
 
 ## Change Log ##
 
+Version 1.1.2 - March 14, 2026
+- PHP 8.4 upgrades
+- Add unit tests
+- Configuration updates
+
 Version 1.1.1 - April 26, 2024
 - Add PHP 8.3 support
 - Add missing translation
