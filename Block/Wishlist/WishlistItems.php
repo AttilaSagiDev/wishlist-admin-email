@@ -52,21 +52,21 @@ class WishlistItems extends Template
      * @param Context $context
      * @param ImageHelper $imageHelper
      * @param ConfigInterface $config
-     * @param array $data
      * @param ItemResolverInterface|null $itemResolver
+     * @param array $data
      */
     public function __construct(
         Context $context,
         ImageHelper $imageHelper,
         ConfigInterface $config,
-        array $data = [],
-        ItemResolverInterface $itemResolver = null
+        ?ItemResolverInterface $itemResolver = null,
+        array $data = []
     ) {
         $this->imageHelper = $imageHelper;
         $this->config = $config;
+        $this->itemResolver = $itemResolver ?? ObjectManager::getInstance()->get(ItemResolverInterface::class);
         parent::__construct($context, $data);
         $this->setTemplate(self::TEMPLATE);
-        $this->itemResolver = $itemResolver ?? ObjectManager::getInstance()->get(ItemResolverInterface::class);
     }
 
     /**
