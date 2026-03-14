@@ -29,7 +29,7 @@ class WishlistItems extends Template
     /**
      * Wishlist items template
      */
-    private const TEMPLATE = 'wishlist/wishlist-items.phtml';
+    private const string TEMPLATE = 'wishlist/wishlist-items.phtml';
 
     /**
      * @var ItemResolverInterface

@@ -18,7 +18,7 @@
             <resource>Space_WishlistAdminEmail::wishlist_admin_email</resource>
             <group id="wishlist_admin_email_config" translate="label" type="text" sortOrder="10" showInDefault="1"
                    showInWebsite="1" showInStore="0">
-                <label>Configuration</label>
+                <label>Basic</label>
                 <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
                        showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Enable Extension</label>
@@ -43,7 +43,7 @@
             </group>
             <group id="wishlist_admin_email_email" translate="label" type="text" sortOrder="20" showInDefault="1"
                    showInWebsite="1" showInStore="0">
-                <label>Configuration</label>
+                <label>Email Settings</label>
                 <field id="items_selection" translate="label comment" type="select" sortOrder="10" showInDefault="1"
                        showInWebsite="1" showInStore="0" canRestore="1">
                     <label>Email Wishlist Items</label>

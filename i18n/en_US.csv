@@ -16,13 +16,14 @@ Details:,Details:
 "Customer Name: %customer_name","Customer Name: %customer_name"
 "Customer Email: %customer_email","Customer Email: %customer_email"
 "Space Extensions","Space Extensions"
-Configuration,Configuration
+Basic,Basic
 "Enable Extension","Enable Extension"
 "Enable extension.","Enable extension."
 "Enable Customer Segmentation","Enable Customer Segmentation"
 "Please select yes, if you would like to set specified customer groups for notification.","Please select yes, if you would like to set specified customer groups for notification."
 "Enabled Customer Groups","Enabled Customer Groups"
 "Please select customer groups.","Please select customer groups."
+"Email Settings","Email Settings"
 "Email Wishlist Items","Email Wishlist Items"
 "Please select to send only the recently added item, or the whole wish list. In the second option the newly added item will be marked.","Please select to send only the recently added item, or the whole wish list. In the second option the newly added item will be marked."
 "Send Emails To","Send Emails To"

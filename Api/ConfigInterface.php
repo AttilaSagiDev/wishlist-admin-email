@@ -19,42 +19,43 @@ interface ConfigInterface
     /**
      * Enabled config path
      */
-    public const XML_PATH_ENABLED = 'wishlist_admin_email/wishlist_admin_email_config/enabled';
+    public const string XML_PATH_ENABLED = 'wishlist_admin_email/wishlist_admin_email_config/enabled';
 
     /**
      * Store config is customer segmentation enabled
      */
-    public const XML_PATH_SEGMENTATION = 'wishlist_admin_email/wishlist_admin_email_config/enable_segmentation';
+    public const string XML_PATH_SEGMENTATION = 'wishlist_admin_email/wishlist_admin_email_config/enable_segmentation';
 
     /**
      * Store config enabled customer groups
      */
-    public const XML_PATH_CUSTOMER_GROUPS = 'wishlist_admin_email/wishlist_admin_email_config/customer_groups';
+    public const string XML_PATH_CUSTOMER_GROUPS = 'wishlist_admin_email/wishlist_admin_email_config/customer_groups';
 
     /**
      * Wishlist notification items config path
      */
-    public const XML_PATH_EMAIL_ITEMS_SELECTION = 'wishlist_admin_email/wishlist_admin_email_email/items_selection';
+    public const string XML_PATH_EMAIL_ITEMS_SELECTION
+        = 'wishlist_admin_email/wishlist_admin_email_email/items_selection';
 
     /**
      * Recipient email config path
      */
-    public const XML_PATH_EMAIL_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/recipient_email';
+    public const string XML_PATH_EMAIL_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/recipient_email';
 
     /**
      * Recipient cc email config path
      */
-    public const XML_PATH_CC_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/cc_email';
+    public const string XML_PATH_CC_RECIPIENT = 'wishlist_admin_email/wishlist_admin_email_email/cc_email';
 
     /**
      * Sender email config path
      */
-    public const XML_PATH_EMAIL_SENDER = 'wishlist_admin_email/wishlist_admin_email_email/sender_email_identity';
+    public const string XML_PATH_EMAIL_SENDER = 'wishlist_admin_email/wishlist_admin_email_email/sender_email_identity';
 
     /**
      * Email template config path
      */
-    public const XML_PATH_EMAIL_TEMPLATE = 'wishlist_admin_email/wishlist_admin_email_email/email_template';
+    public const string XML_PATH_EMAIL_TEMPLATE = 'wishlist_admin_email/wishlist_admin_email_email/email_template';
 
     /**
      * Check if wishlist admin email module is enabled
@@ -73,7 +74,7 @@ interface ConfigInterface
     /**
      * Get enabled customer groups
      *
-     * @return array|bool
+     * @return array|null
      */
     public function getEnabledCustomerGroups(): ?array;
 

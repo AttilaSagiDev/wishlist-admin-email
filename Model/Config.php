@@ -59,7 +59,7 @@ class Config implements ConfigInterface
     /**
      * Get enabled customer groups
      *
-     * @return array|false
+     * @return array|null
      */
     public function getEnabledCustomerGroups(): ?array
     {
@@ -72,7 +72,7 @@ class Config implements ConfigInterface
             return explode(',', $customerGroups);
         }
 
-        return false;
+        return null;
     }
 
     /**
