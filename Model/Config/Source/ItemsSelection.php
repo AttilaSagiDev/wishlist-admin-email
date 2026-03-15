@@ -15,12 +15,12 @@ class ItemsSelection implements OptionSourceInterface
     /**
      * Only newly added
      */
-    public const ONLY_NEWLY_ADDED = 1;
+    public const int ONLY_NEWLY_ADDED = 1;
 
     /**
      * Whole wishlist
      */
-    public const WHOLE_WISHLIST = 2;
+    public const int WHOLE_WISHLIST = 2;
 
     /**
      * Options getter

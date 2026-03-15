@@ -1,6 +1,6 @@
 <?php
 /**
- * Copyright (c) 2024 Attila Sagi
+ * Copyright (c) 2026 Attila Sagi
  * @license http://www.opensource.org/licenses/mit-license.html  MIT License
  */
 
@@ -59,7 +59,7 @@ class Config implements ConfigInterface
     /**
      * Get enabled customer groups
      *
-     * @return array|false
+     * @return array|null
      */
     public function getEnabledCustomerGroups(): ?array
     {
@@ -72,7 +72,7 @@ class Config implements ConfigInterface
             return explode(',', $customerGroups);
         }
 
-        return false;
+        return null;
     }
 
     /**
